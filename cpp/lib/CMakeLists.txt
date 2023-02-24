@@ -1,5 +1,10 @@
 # pybind11 method:
-pybind11_add_module(patient patient.cpp)
+pybind11_add_module(patient
+	SHARED patient.cpp
+)
+target_link_libraries(patient
+	PRIVATE Qt5::Core
+)
 
 ## pybind11 method:
 #pybind11_add_module(MyModule1 src1.cpp)
