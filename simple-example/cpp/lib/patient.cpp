@@ -13,6 +13,12 @@ std::string greeting(const std::string& name) {
 	return QStringLiteral("Hello %1!").arg(QString::fromStdString(name)).toStdString();
 }
 
+auto lofasz = [](int i, int j) { return i - j; };
+
+
+
+
+
 namespace py = pybind11;
 
 PYBIND11_MODULE(patient, m) {
@@ -32,7 +38,7 @@ PYBIND11_MODULE(patient, m) {
         Some other explanation about the add function.
     )pbdoc");
 
-	m.def("subtract", [](int i, int j) { return i - j; }, R"pbdoc(
+	m.def("subtract", lofasz, R"pbdoc(
         Subtract two numbers
         Some other explanation about the subtract function.
     )pbdoc");
